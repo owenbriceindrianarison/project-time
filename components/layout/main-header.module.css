@@ -1,11 +1,16 @@
-.header {
+.container {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #202020;
+}
+.header {
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   /* padding: 1rem 10%; */
   height: 5rem;
-  background-color: #202020;
 }
 
 .logo {

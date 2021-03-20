@@ -1,9 +1,11 @@
+import { NextPage } from 'next'
 import { AppProps } from 'next/app'
+
 import Layout from '../components/layout/layout'
 
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <Layout>
       <Component {...pageProps} />

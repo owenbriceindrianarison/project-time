@@ -1,22 +1,15 @@
+import { IEvent } from '../../helpers/interfaces'
+import ErrorAlert from '../ui/error-alert'
 import EventItem from './event-item'
-
 import classes from './event-list.module.css'
 
-interface ItemInterface {
-  id: string
-  title: string
-  image: string
-  date: string
-  location: string
-}
-
-const EventList = (props: { items: Array<ItemInterface> }) => {
+const EventList = (props: { items?: Array<IEvent> }) => {
   const { items } = props
 
   if (items && items.length > 0) {
     return (
       <ul className={classes.list}>
-        {items.map((event: ItemInterface) => (
+        {items.map((event: IEvent) => (
           <EventItem
             key={event.id}
             id={event.id}
@@ -30,7 +23,7 @@ const EventList = (props: { items: Array<ItemInterface> }) => {
     )
   }
 
-  return <div>Items not founs</div>
+  return <ErrorAlert>Items not found</ErrorAlert>
 }
 
 export default EventList

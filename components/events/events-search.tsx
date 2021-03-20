@@ -4,7 +4,7 @@ import Button from '../ui/button'
 import classes from './events-search.module.css'
 
 function EventsSearch(props: {
-  onSearch: (year: string, month: string) => {}
+  onSearch: (year: string, month: string) => void
 }) {
   const yearInputRef = useRef()
   const monthInputRef = useRef()

@@ -7,3 +7,10 @@ export interface IEvent {
   date: string
   isFeatured: boolean
 }
+
+export interface IComment {
+  id: string
+  email: string
+  name: string
+  text: string
+}

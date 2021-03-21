@@ -1,5 +1,5 @@
-import classes from '*.module.css'
-import { NextPage, GetStaticPathsResult, GetStaticPropsResult } from 'next'
+import { GetStaticPathsResult, GetStaticPropsResult, NextPage } from 'next'
+import Head from 'next/head'
 import React, { Fragment } from 'react'
 
 import EventContent from '../../components/event-detail/event-content'
@@ -24,6 +24,13 @@ const EventDetailPage: NextPage<IEventDetailProps> = (props) => {
 
   return (
     <Fragment>
+      <Head>
+        <title>{selectedEvent.title}</title>
+        <meta
+          name='description'
+          content='Find a lot of great events that allow you to evolve...'
+        />
+      </Head>
       <EventSummary title={selectedEvent.title} />
       <EventLogistics
         date={selectedEvent.date}

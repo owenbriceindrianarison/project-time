@@ -1,5 +1,5 @@
 import { GetServerSidePropsResult, NextPage } from 'next'
-import { useRouter } from 'next/router'
+import Head from 'next/head'
 import { Fragment } from 'react'
 
 import EventsList from '../../components/events/event-list'
@@ -19,9 +19,20 @@ interface IFilteredEvents {
 }
 
 const FilteredEventsPage: NextPage<IFilteredEvents> = (props) => {
+  const pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta
+        name='description'
+        content={`All Events for ${props.date?.month}/${props.date?.year}`}
+      />
+    </Head>
+  )
+
   if (props.hasError) {
     return (
       <Fragment>
+        {pageHeadData}
         <ErrorAlert>
           <p className='center'>No events found for the chosen filter!</p>
         </ErrorAlert>
@@ -32,15 +43,16 @@ const FilteredEventsPage: NextPage<IFilteredEvents> = (props) => {
     )
   }
 
-  let resDate
+  let pageResult
   if (props.date) {
     const date = new Date(props.date?.year, props.date?.month - 1)
-    resDate = <ResultsTitle date={date} />
+    pageResult = <ResultsTitle date={date} />
   }
 
   return (
     <Fragment>
-      {resDate}
+      {pageHeadData}
+      {pageResult}
       <EventsList items={props.events} />
     </Fragment>
   )
